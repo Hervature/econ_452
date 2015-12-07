@@ -78,7 +78,7 @@ end
   (1..data[1]).each do |page|
     puts page
     @session.visit "http://www.oddsportal.com/hockey/usa/nhl-#{data[0]-1}-#{data[0]}/results/#/page/#{page}/"
-    sleep(2)
+    sleep(20)
     @html_doc = Nokogiri::HTML(@session.html)
 
     @html_doc.css('tr.deactivate').each do |tr|
@@ -88,6 +88,9 @@ end
       @home_team, @away_team = tr.css('td')[1].text.split(" - ")
       @home_team = @home_team.gsub(/[^A-z ]/i, '')
       @away_team = @away_team.gsub(/[^A-z ]/i, '')
+
+      # Skip cancelled game
+      next if tr.css('td')[2].text.include?('canc')
 
       @home_goals, @away_goals = tr.css('td')[2].text.split(":")
 
@@ -118,9 +121,9 @@ end
       @playoff_game = false
       @preseason_game = false
 
-      if @date.strftime('%Y').to_i => 2009 && (@date.strftime('%m').to_i > 4 || (@date.strftime('%m').to_i == 4 && @date.strftime('%d').to_i > data[3])) then
+      if @date.strftime('%Y').to_i >= 2009 && (@date.strftime('%m').to_i > 4 || (@date.strftime('%m').to_i == 4 && @date.strftime('%d').to_i > data[3])) then
         @playoff_game = true
-      elsif @date.strftime('%Y').to_i => 2008 && (@date.strftime('%m').to_i < 10 || (@date.strftime('%m').to_i == 10 && @date.strftime('%d').to_i < data[2])) then
+      elsif @date.strftime('%Y').to_i >= 2008 && (@date.strftime('%m').to_i < 10 || (@date.strftime('%m').to_i == 10 && @date.strftime('%d').to_i < data[2])) then
         @preseason_game = true
       end
 
@@ -138,7 +141,7 @@ end
       @g.home_win = @home_win
       @g.away_win = @away_win
       @g.date = @date
-      @g.season = 2014
+      @g.season = data[0]
       @g.home_odds = @home_odds
       @g.tie_odds = @tie_odds
       @g.away_odds = @away_odds
