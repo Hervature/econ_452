@@ -1,0 +1,31 @@
+# Logfile created on 2015-12-06 16:44:34 -0500 by logger.rb/44203
+D, [2015-12-06T16:44:35.047886 #34633] DEBUG -- :   [1m[36m (1.4ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" varchar NOT NULL) [0m
+D, [2015-12-06T16:44:35.048373 #34633] DEBUG -- :   [1m[35m (0.1ms)[0m  select sqlite_version(*)
+D, [2015-12-06T16:44:35.050513 #34633] DEBUG -- :   [1m[36m (1.5ms)[0m  [1mCREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")[0m
+D, [2015-12-06T16:44:35.051682 #34633] DEBUG -- :   [1m[35mActiveRecord::SchemaMigration Load (0.1ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+I, [2015-12-06T16:44:35.056472 #34633]  INFO -- : Migrating to Schema (1)
+D, [2015-12-06T16:47:09.220413 #34637] DEBUG -- :   [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+I, [2015-12-06T16:47:09.223467 #34637]  INFO -- : Migrating to Schema (1)
+D, [2015-12-06T16:47:09.224005 #34637] DEBUG -- :   [1m[35m (0.1ms)[0m  begin transaction
+D, [2015-12-06T16:47:09.225445 #34637] DEBUG -- :   [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+D, [2015-12-06T16:47:26.946099 #34640] DEBUG -- :   [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+I, [2015-12-06T16:47:26.949212 #34640]  INFO -- : Migrating to Schema (1)
+D, [2015-12-06T16:47:26.949756 #34640] DEBUG -- :   [1m[35m (0.1ms)[0m  begin transaction
+D, [2015-12-06T16:47:26.950924 #34640] DEBUG -- :   [1m[36m (0.1ms)[0m  [1mrollback transaction[0m
+D, [2015-12-06T16:47:55.662706 #34641] DEBUG -- :   [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+I, [2015-12-06T16:47:55.665824 #34641]  INFO -- : Migrating to Schema (1)
+D, [2015-12-06T16:47:55.666386 #34641] DEBUG -- :   [1m[35m (0.1ms)[0m  begin transaction
+D, [2015-12-06T16:47:55.668414 #34641] DEBUG -- :   [1m[36m (0.4ms)[0m  [1mCREATE TABLE "games" ("id" INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, "home_team" varchar, "home_id" integer, "away_team" varchar, "away_id" integer, "home_goals" integer, "away_goals" integer, "home_win" boolean, "away_win" boolean, "date" date, "season" integer, "home_odds" float, "tie_odds" float, "away_odds" float, "away_roadtrip_length_games" integer, "away_roadtrip_length_days" integer, "away_roadtrip_length_km" integer, "away_days_since_last_travel" integer, "away_last_travel_length_km" integer, "away_timezone_change" integer, "away_last_travel_direction" boolean) [0m
+D, [2015-12-06T16:47:55.739102 #34641] DEBUG -- :   [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES (?)  [["version", "1"]]
+D, [2015-12-06T16:47:55.740665 #34641] DEBUG -- :   [1m[36m (1.3ms)[0m  [1mcommit transaction[0m
+D, [2015-12-06T17:08:35.817160 #34676] DEBUG -- :   [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+D, [2015-12-06T17:09:05.587388 #34680] DEBUG -- :   [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+D, [2015-12-06T17:13:34.311504 #34691] DEBUG -- :   [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+I, [2015-12-06T17:13:34.329653 #34691]  INFO -- : Migrating to AddColumns (2)
+D, [2015-12-06T17:14:01.065523 #34693] DEBUG -- :   [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+I, [2015-12-06T17:14:01.083412 #34693]  INFO -- : Migrating to AddColumns (2)
+D, [2015-12-06T17:14:01.084087 #34693] DEBUG -- :   [1m[35m (0.1ms)[0m  begin transaction
+D, [2015-12-06T17:14:01.085186 #34693] DEBUG -- :   [1m[36m (0.6ms)[0m  [1mALTER TABLE "games" ADD "playoff_game" boolean[0m
+D, [2015-12-06T17:14:01.085568 #34693] DEBUG -- :   [1m[35m (0.2ms)[0m  ALTER TABLE "games" ADD "preseason_game" boolean
+D, [2015-12-06T17:14:01.104807 #34693] DEBUG -- :   [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES (?)[0m  [["version", "2"]]
+D, [2015-12-06T17:14:01.106245 #34693] DEBUG -- :   [1m[35m (1.2ms)[0m  commit transaction
