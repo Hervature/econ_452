@@ -73,7 +73,7 @@ end
   [2006, 25, 4, 19]
 ]
 
-for @season_data.each do |data|
+@season_data.each do |data|
   puts data[0]
   (1..data[1]).each do |page|
     puts page
