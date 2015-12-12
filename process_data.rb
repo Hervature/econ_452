@@ -110,7 +110,7 @@ end
       if game.home_id == team then
         #first game since they are rested
         if i == 0 then
-          game.home_days_since_last_travel = 50
+          game.home_days_since_last_travel = 7
           game.home_last_travel_length_km = 0
           game.home_timezone_change = 0
           game.home_last_travel_direction = 0
@@ -126,7 +126,7 @@ end
       if game.away_id == team then
         #first game since they are rested
         if i == 0 then
-          game.away_days_since_last_travel = 50
+          game.away_days_since_last_travel = 7
           game.away_last_travel_length_km = @distances[game.home_id-1][game.away_id-1]
           game.away_timezone_change = (@timezones[game.home_id-1] - @timezones[game.away_id-1]).abs
           game.away_last_travel_direction = @timezones[game.home_id-1] - @timezones[game.away_id-1] <= 0
