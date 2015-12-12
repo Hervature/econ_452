@@ -61,16 +61,16 @@ end
 
 #[year, pages, preseason, playoffs]
 @season_data = [
-  [2015, 29, 6, 13],
-  [2014, 29, 1, 15],
-  [2013, 17, 1, 30],
-  [2012, 29, 3, 9],
-  [2011, 29, 5, 11],
-  [2010, 29, 1, 13],
-  [2009, 27, 3, 13],
-  [2008, 27, 1, 8],
-  [2007, 24, 3, 9],
-  [2006, 25, 4, 19]
+  [2015, 29],
+  [2014, 29],
+  [2013, 17],
+  [2012, 29],
+  [2011, 29],
+  [2010, 29],
+  [2009, 27],
+  [2008, 27],
+  [2007, 24],
+  [2006, 25]
 ]
 
 @season_data.each do |data|
@@ -118,15 +118,6 @@ end
       @tie_odds = tr.css('td')[4].css('a').text.to_f
       @away_odds = tr.css('td')[5].css('a').text.to_f
 
-      @playoff_game = false
-      @preseason_game = false
-
-      if @date.strftime('%Y').to_i >= 2009 && (@date.strftime('%m').to_i > 4 || (@date.strftime('%m').to_i == 4 && @date.strftime('%d').to_i > data[3])) then
-        @playoff_game = true
-      elsif @date.strftime('%Y').to_i >= 2008 && (@date.strftime('%m').to_i < 10 || (@date.strftime('%m').to_i == 10 && @date.strftime('%d').to_i < data[2])) then
-        @preseason_game = true
-      end
-
       # Skip if All Star game
       next if @teams.index(@home_team).nil? || @teams.index(@away_team).nil?
 
@@ -145,8 +136,6 @@ end
       @g.home_odds = @home_odds
       @g.tie_odds = @tie_odds
       @g.away_odds = @away_odds
-      @g.playoff_game = @playoff_game
-      @g.preseason_game = @preseason_game
 
       @g.save
     end
